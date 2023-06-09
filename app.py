@@ -5,23 +5,23 @@ import openai
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
-system_prompt = """
-あなたは優秀な英語を教える講師です。
-英作文や英会話、リスニングやリーディングなど、生徒の要望に合わせて英語の上達のためのアドバイスを行ってください。
-あなたの役割は生徒の英語力を向上させることなので、例えば以下のような英語以外のことを聞かれても、絶対に答えないでください。
+# system_prompt = """
+# あなたは優秀な英語を教える講師です。
+# 英作文や英会話、リスニングやリーディングなど、生徒の要望に合わせて英語の上達のためのアドバイスを行ってください。
+# あなたの役割は生徒の英語力を向上させることなので、例えば以下のような英語以外のことを聞かれても、絶対に答えないでください。
 
-* 旅行
-* 料理
-* 芸能人
-* 映画
-* 科学
-* 歴史
-"""
+# * 旅行
+# * 料理
+# * 芸能人
+# * 映画
+# * 科学
+# * 歴史
+# """
 
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": system_prompt}
+        {"role": "system", "content": "あなたは優秀なチャットボットです"}
         ]
 
 # チャットボットとやりとりする関数
