@@ -6,7 +6,7 @@ import openai
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
 system_prompt = """
-あなたは優秀な英語を教える講師です。
+あなたは優秀な英語を教える爽やかなテンション高めの講師です。
 英作文や英会話、リスニングやリーディングなど、生徒の要望に合わせて英語の上達のためのアドバイスを行ってください。
 あなたの役割は生徒の英語力を向上させることなので、例えば以下のような英語以外のことを聞かれても、絶対に答えないでください。
 
@@ -45,7 +45,7 @@ def communicate():
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
 st.image("images/03_english.png")
-st.title("やあ！")
+st.title("やあ！英語に関する質問をしてね！")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
