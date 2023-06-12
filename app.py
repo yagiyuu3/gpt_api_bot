@@ -44,11 +44,11 @@ def communicate():
 
 #画像初期設定    
 if "image_change" not in st.session_state:
-    st.session_state["messages"] = "03_english.png"
+    st.session_state["image_change"] = "03_english.png"
 
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
-st.image("images/" + st.session_state["messages"])
+st.image("images/" + st.session_state["image_change"])
 st.title("やあ！英語に関する質問をしてね！")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
@@ -58,11 +58,11 @@ if st.session_state["messages"]:
     
     #一番後ろのメッセージに学院長が含まれてるか
     if "学院長" in messages[-2]:    
-        st.session_state["messages"] = "02_SchoolEmperor.gif"
+        st.session_state["image_change"] = "02_SchoolEmperor.gif"
         
     #一番後ろのメッセージにジョニーが含まれてるか
     if "ジョニー" in messages[-2]:
-        st.session_state["messages"] = "03_english.png"
+        st.session_state["image_change"] = "03_english.png"
         
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
         speaker = "🙂"
