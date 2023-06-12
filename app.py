@@ -56,6 +56,7 @@ user_input = st.text_input("メッセージを入力してください。", key=
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
     
+    #質問をしていて
     if len(messages) >= 2:
         #一番後ろのメッセージに学院長が含まれてるか
         if "学院長" in messages[-2]["content"]:    
