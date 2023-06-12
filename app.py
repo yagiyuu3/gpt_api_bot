@@ -45,18 +45,16 @@ def communicate():
 #画像初期設定    
 if "image_change" not in st.session_state:
     st.session_state["image_change"] = "03_english.png"
+ 
+#質問をしていて
+if len(st.session_state["messages"]) >= 2:
+    #一番後ろのメッセージに学院長が含まれてるか
+    if "学院長" in messages[-2]["content"]:    
+        st.session_state["image_change"] = "02_SchoolEmperor.gif"
 
-if st.session_state["messages"]:
-    messages = st.session_state["messages"]   
-    #質問をしていて
-    if len(messages) >= 2:
-        #一番後ろのメッセージに学院長が含まれてるか
-        if "学院長" in messages[-2]["content"]:    
-            st.session_state["image_change"] = "02_SchoolEmperor.gif"
-
-        #一番後ろのメッセージにジョニーが含まれてるか
-        if "ジョニー" in messages[-2]["content"]:
-            st.session_state["image_change"] = "03_english.png"
+    #一番後ろのメッセージにジョニーが含まれてるか
+    if "ジョニー" in messages[-2]["content"]:
+        st.session_state["image_change"] = "03_english.png"
     
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
