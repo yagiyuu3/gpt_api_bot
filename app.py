@@ -58,7 +58,7 @@ if st.session_state["messages"]:
     
     #一番後ろのメッセージに学院長が含まれてるか
     if "学院長" in messages[-2]:    
-        st.session_state["messages"] = "03_english.png"
+        st.session_state["messages"] = "02_SchoolEmperor.gif"
         
     #一番後ろのメッセージにジョニーが含まれてるか
     if "ジョニー" in messages[-2]:
