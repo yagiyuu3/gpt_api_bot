@@ -57,11 +57,11 @@ if st.session_state["messages"]:
     messages = st.session_state["messages"]
     
     #一番後ろのメッセージに学院長が含まれてるか
-    if "学院長" in messages[-1]["content"]:    
+    if "学院長" in messages[-2]["content"]:    
         st.session_state["image_change"] = "02_SchoolEmperor.gif"
         
     #一番後ろのメッセージにジョニーが含まれてるか
-    if "ジョニー" in messages[-1]["content"]:
+    if "ジョニー" in messages[-2]["content"]:
         st.session_state["image_change"] = "03_english.png"
         
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
@@ -70,4 +70,3 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
-        st.write(messages[-2]["content"])
