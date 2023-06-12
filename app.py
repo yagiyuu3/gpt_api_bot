@@ -46,6 +46,18 @@ def communicate():
 if "image_change" not in st.session_state:
     st.session_state["image_change"] = "03_english.png"
 
+if st.session_state["messages"]:
+    messages = st.session_state["messages"]   
+    #質問をしていて
+    if len(messages) >= 2:
+        #一番後ろのメッセージに学院長が含まれてるか
+        if "学院長" in messages[-2]["content"]:    
+            st.session_state["image_change"] = "02_SchoolEmperor.gif"
+
+        #一番後ろのメッセージにジョニーが含まれてるか
+        if "ジョニー" in messages[-2]["content"]:
+            st.session_state["image_change"] = "03_english.png"
+    
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
 image = st.image("images/" + st.session_state["image_change"])
@@ -55,18 +67,6 @@ user_input = st.text_input("メッセージを入力してください。", key=
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
-    
-    #質問をしていて
-    if len(messages) >= 2:
-        #一番後ろのメッセージに学院長が含まれてるか
-        if "学院長" in messages[-2]["content"]:    
-            st.session_state["image_change"] = "02_SchoolEmperor.gif"
-            image = st.image("images/" + st.session_state["image_change"])
-
-        #一番後ろのメッセージにジョニーが含まれてるか
-        if "ジョニー" in messages[-2]["content"]:
-            st.session_state["image_change"] = "03_english.png"
-            image = st.image("images/" + st.session_state["image_change"])
         
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
         speaker = "🙂"
