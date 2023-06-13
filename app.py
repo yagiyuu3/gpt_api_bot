@@ -66,7 +66,7 @@ osusume = ["単語", "会話", "文法", "英験", "発音"]
 ran_int = st.empty()
 #一回だけ実行する
 if "random_osusume" not in st.session_state:
-    ran_int = random.randint()
+    ran_int = random.randint(0, len(osusume)-1)
     st.session_state["random_osusume"] = 1
     
 # ユーザーインターフェイスの構築
