@@ -62,7 +62,7 @@ if len(st.session_state["messages"]) >= 2:
 
 
         
-osusume = ["単語", "会話", "文法", "英験", "発音"] 
+osusume = ["単語", "会話", "文法", "試験", "発音"] 
 ran_int = st.empty()
 #一回だけ実行する
 if "random_osusume" not in st.session_state:
