@@ -48,12 +48,12 @@ if "image_change" not in st.session_state:
  
 #質問をしていて
 if len(st.session_state["messages"]) >= 2:
-    #一番後ろのメッセージに学院長が含まれてるか
-    if "学院長に変身" in st.session_state["messages"][-2]["content"]:    
+    #一番後ろのメッセージに”くるくる”が含まれてるか
+    if "くるくる" in st.session_state["messages"][-2]["content"]:    
         st.session_state["image_change"] = "02_SchoolEmperor.gif"
-
-    #一番後ろのメッセージにジョニーが含まれてるか
-    if "ジョニー" in st.session_state["messages"][-2]["content"]:
+        del st.session_state["image_change"][-2:-1]
+    #そうじゃななかったら
+    else:
         st.session_state["image_change"] = "03_english.png"
     
 # ユーザーインターフェイスの構築
