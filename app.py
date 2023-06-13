@@ -63,16 +63,14 @@ if len(st.session_state["messages"]) >= 2:
 
         
 osusume = ["単語", "会話", "文法", "試験", "発音"] 
-ran_int = st.empty()
 #一回だけ実行する
 if "random_osusume" not in st.session_state:
-    ran_int = random.randint(0, len(osusume)-1)
-    st.session_state["random_osusume"] = 1
+    st.session_state["random_osusume"] = random.randint(0, len(osusume)-1)
     
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
 image = st.image("images/" + st.session_state["image_change"])
-st.title(f"やあ！今日は英語の{osusume[ran_int]}に関する質問をしてみてもいいかもね！")
+st.title(f"やあ！今日は英語の{osusume[st.session_state["random_osusume"]]}に関する質問をしてみてもいいかもね！")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
