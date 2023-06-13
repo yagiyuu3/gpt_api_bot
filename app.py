@@ -49,7 +49,7 @@ if "image_change" not in st.session_state:
 #質問をしていて
 if len(st.session_state["messages"]) >= 2:
     #一番後ろのメッセージに”くるくる”が含まれてるか
-    if "くるくる" in st.session_state["messages"][-2]["content"]:    
+    if "くるくるさーくるくるまわれ" in st.session_state["messages"][-2]["content"]:    
         st.session_state["image_change"] = "02_SchoolEmperor.gif"
         del st.session_state["messages"][-2:]
     #そうじゃななかったら
