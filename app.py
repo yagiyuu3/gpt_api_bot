@@ -46,7 +46,7 @@ def communicate():
     
 #画像初期設定    
 if "image_change" not in st.session_state:
-    st.session_state["image_change"] = "03_english.png"
+    st.session_state["image_change"] = "03_english.gif"
  
 #少なくとも1つ質問をしていて
 if len(st.session_state["messages"]) >= 2:
