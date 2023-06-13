@@ -58,7 +58,7 @@ if len(st.session_state["messages"]) >= 2:
     #そうじゃななかったら
     else:
         #普通のジョニー先生に変える
-        st.session_state["image_change"] = "03_english.png"
+        st.session_state["image_change"] = "03_english.gif"
 
 
         
