@@ -70,7 +70,7 @@ if "random_osusume" not in st.session_state:
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
 image = st.image("images/" + st.session_state["image_change"])
-st.write("「やあ！今日は英語の" + osusume[st.session_state["random_osusume"]] + "に関する質問をしてみてもいいかもね！」")
+st.write("「今回は英語の" + osusume[st.session_state["random_osusume"]] + "に関する質問をしてもみるのも良いかもしれませんね！」")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
