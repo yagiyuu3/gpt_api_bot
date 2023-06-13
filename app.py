@@ -1,6 +1,7 @@
 
 import streamlit as st
 import openai
+import random
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
@@ -24,7 +25,6 @@ if "messages" not in st.session_state:
         {"role": "system", "content": system_prompt}
         ]
     
-
 # チャットボットとやりとりする関数
 def communicate():
     messages = st.session_state["messages"]
@@ -42,24 +42,37 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
+    
+    
 #画像初期設定    
 if "image_change" not in st.session_state:
     st.session_state["image_change"] = "03_english.png"
  
-#質問をしていて
+#少なくとも1つ質問をしていて
 if len(st.session_state["messages"]) >= 2:
-    #一番後ろのメッセージに”くるくる”が含まれてるか
+    #一番後ろのメッセージに”くるくる”が含まれていたら
     if "くるくるさーくるくるまわれ" in st.session_state["messages"][-2]["content"]:    
+        #画像をくるくる回るジョニー先生に変える
         st.session_state["image_change"] = "02_SchoolEmperor.gif"
         del st.session_state["messages"][-2:]
     #そうじゃななかったら
     else:
+        #普通のジョニー先生に変える
         st.session_state["image_change"] = "03_english.png"
+
+
+        
+osusume = ["単語", "会話", "文法", "英験", "発音"] 
+ran_int = st.empty()
+#一回だけ実行する
+if "random_osusume" not in st.session_state:
+    ran_int = random.randint()
+    st.session_state["random_osusume"] = 1
     
 # ユーザーインターフェイスの構築
 st.title("英語教師ジョニー先生")
 image = st.image("images/" + st.session_state["image_change"])
-st.title("やあ！英語に関する質問をしてね！")
+st.title(f"やあ！今日は英語の{osusume[ran_int]}に関する質問をしてみてもいいかもね！")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
