@@ -110,4 +110,4 @@ if "random_himatsubushi" not in st.session_state:
     st.session_state["random_himatsubushi"] = random.randint(0, len(himatsubushi)-1)
     
 st.write()
-st.write("「暇つぶしに”" + himatsubushi[st.session_state["random_himatsubushi"]] + "”って入力してみて下さい。」")
+st.write("「暇つぶしに　" + himatsubushi[st.session_state["random_himatsubushi"]] + "　って入力してみると...」")
