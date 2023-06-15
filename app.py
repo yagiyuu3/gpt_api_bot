@@ -59,13 +59,13 @@ if len(st.session_state["messages"]) >= 2:
         del st.session_state["messages"][-2:]
         
     #一番後ろのメッセージに”のりのりジョニー”が含まれていたら
-    if "のりのりジョニー" in st.session_state["messages"][-2]["content"]:    
+    elif "のりのりジョニー" in st.session_state["messages"][-2]["content"]:    
         #画像をのりのりジョニー先生に変える
         st.session_state["image_change"] = "01_english_norinori.gif"
         del st.session_state["messages"][-2:]   
         
     #一番後ろのメッセージに”なないろジョニー”が含まれていたら
-    if "なないろジョニー" in st.session_state["messages"][-2]["content"]:    
+    elif "なないろジョニー" in st.session_state["messages"][-2]["content"]:    
         #画像をなないろジョニー先生に変える
         st.session_state["image_change"] = "04_rainbow.gif"
         del st.session_state["messages"][-2:]
