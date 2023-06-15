@@ -2,6 +2,7 @@
 import streamlit as st
 import openai
 import random
+import time
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
@@ -96,5 +97,17 @@ if st.session_state["messages"]:
         speaker = "🙂"
         if message["role"]=="assistant":
             speaker="🤖"
+            st.write(speaker + ":「" + message["content"] + "」")
+        else:
+            st.write(speaker + ": " + message["content"])
 
-        st.write(speaker + ": " + message["content"])
+#一定時間後にこれを表示する
+time.sleep(60)
+himatsubushi = ["くるくるジョニー", "のりのりジョニー", "なないろジョニー"] 
+#一回だけ実行する
+if "random_himatsubushi" not in st.session_state:
+    #ランダム選出
+    st.session_state["random_himatsubushi"] = random.randint(0, len(himatsubushi)-1)
+    
+st.write()
+st.write("「暇つぶしに”" + himatsubushi[st.session_state["random_himatsubushi"]] + "”って入力してみて下さい。」")
