@@ -52,11 +52,24 @@ if "image_change" not in st.session_state:
  
 #少なくとも1つ質問をしていて
 if len(st.session_state["messages"]) >= 2:
-    #一番後ろのメッセージに”くるくる”が含まれていたら
-    if "くるくるさーくるくるまわれ" in st.session_state["messages"][-2]["content"]:    
-        #画像をくるくる回るジョニー先生に変える
+    #一番後ろのメッセージに”くるくるジョニー”が含まれていたら
+    if "くるくるジョニー" in st.session_state["messages"][-2]["content"]:    
+        #画像をくるくるジョニー先生に変える
         st.session_state["image_change"] = "02_SchoolEmperor.gif"
         del st.session_state["messages"][-2:]
+        
+    #一番後ろのメッセージに”のりのりジョニー”が含まれていたら
+    if "のりのりジョニー" in st.session_state["messages"][-2]["content"]:    
+        #画像をのりのりジョニー先生に変える
+        st.session_state["image_change"] = "01_english_norinori.gif"
+        del st.session_state["messages"][-2:]   
+        
+    #一番後ろのメッセージに”なないろジョニー”が含まれていたら
+    if "なないろジョニー" in st.session_state["messages"][-2]["content"]:    
+        #画像をなないろジョニー先生に変える
+        st.session_state["image_change"] = "04_rainbow.gif"
+        del st.session_state["messages"][-2:]
+        
     #そうじゃななかったら
     else:
         #普通のジョニー先生に変える
