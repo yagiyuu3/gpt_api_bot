@@ -104,7 +104,7 @@ if st.session_state["messages"]:
 #一回だけ実行する
 if "random_himatsubushi" not in st.session_state:
     #一定時間後にこれを表示する
-    time.sleep(60)
+    time.sleep(30)
     himatsubushi = ["くるくるジョニー", "のりのりジョニー", "なないろジョニー"] 
     #ランダム選出
     st.session_state["random_himatsubushi"] = random.randint(0, len(himatsubushi)-1)
