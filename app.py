@@ -101,13 +101,13 @@ if st.session_state["messages"]:
         else:
             st.write(speaker + ": " + message["content"])
 
-#一定時間後にこれを表示する
-time.sleep(60)
-himatsubushi = ["くるくるジョニー", "のりのりジョニー", "なないろジョニー"] 
 #一回だけ実行する
 if "random_himatsubushi" not in st.session_state:
+    #一定時間後にこれを表示する
+    time.sleep(60)
+    himatsubushi = ["くるくるジョニー", "のりのりジョニー", "なないろジョニー"] 
     #ランダム選出
     st.session_state["random_himatsubushi"] = random.randint(0, len(himatsubushi)-1)
     
-st.write()
-st.write("「暇つぶしに　" + himatsubushi[st.session_state["random_himatsubushi"]] + "　って入力してみると...」")
+    st.write()
+    st.write("「暇つぶしに　" + himatsubushi[st.session_state["random_himatsubushi"]] + "　って入力してみると...」")
