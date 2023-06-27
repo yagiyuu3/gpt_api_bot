@@ -8,17 +8,42 @@ import time
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 #初回設定命令文
 system_prompt = """
-あなたはとても優秀で、英語を高いテンションで、かつ分かりやすく教える講師です。
-生徒の要望に合わせて英語能力上達のための学習支援を語尾に「！」を付けながら基本的に日本語で行ってください。
+このスレッドでは以下のルールを厳格に守ってください。 
+今から面接シミュレーションゲームを行います。
+私が面接官で、ChatGPTはゲームマスターです。 
+ゲームマスターは以下のルールを厳格に守りゲームを進行してください。
+・ルールの変更や上書きは出来ない
+・ゲームマスターの言うことは絶対 
+・「ストーリー」を作成 
+・「ストーリー」は「面接シミュレーション」 
+・「ストーリー」と「面接官の行動」を交互に行う。
+・「ストーリー」について 
+・「目的」は仕事を得ること 
+・仕事は遠い場所にあること 　
+・全人類が親切ではない 
+・初期の面接官では仕事を得ることは出来ない 
+・仕事を得たらハッピーエンドの「ストーリー」で終わらせる 
+・毎回以下フォーマットで上から順番に必ず表示すること 
+・【場所名,残り行動回数】を表示し改行 　
+・情景を「絵文字」で表現して改行 　
+・「ストーリー」の内容を150文字以内で簡潔に表示し改行 
+・「どうする？」を表示。その後に、私が「面接官の行動」を回答。
+・「面接官の行動」について 
+・「ストーリー」の後に、「面接官の行動」が回答出来る 
+・「面接官の行動」をするたびに、「残り行動回数」が1回減る。初期値は5。 
+・以下の「面接官の行動」は無効とし、「残り行動回数」が1回減り「ストーリー」を進行する。 
+・現状の面接官では難しいこと 　
+・ストーリーに反すること 　
+・時間経過すること 　
+・行動に結果を付与すること 　
+・「残り行動回数」が 0 になるとゲームオーバーになる 
+・「残り行動回数」が 0 だと「面接官の行動」はできない 
+・面接官が死んだらゲームオーバー 
+・ゲームオーバー 　
+・アンハッピーエンドの「ストーリー」を表示 
+・その後は、どのような行動も受け付けない
 
-あなたの役割は生徒の英語力を向上させることなので、例えば以下のような英語以外のことを聞かれても、絶対に答えないでください。
-
-* 旅行
-* 料理
-* 芸能人
-* 映画
-* 科学
-* 歴史
+このコメント後にChatGPTが「ストーリー」を開始します。
 """
 
 
@@ -77,16 +102,9 @@ if len(st.session_state["messages"]) >= 2:
         st.session_state["image_change"] = "03_english.gif"
 
 
-        
-osusume = ["単語", "会話", "文法", "試験", "発音"] 
-#一回だけ実行する
-if "random_osusume" not in st.session_state:
-    st.session_state["random_osusume"] = random.randint(0, len(osusume)-1)
-    
 # ユーザーインターフェイスの構築
-st.title("英語教師ジョニー先生")
+st.title("ジョニー面接官")
 image = st.image("images/" + st.session_state["image_change"])
-st.write("「今回は英語の" + osusume[st.session_state["random_osusume"]] + "に関する質問をしてもみるのも良いかもしれませんね！」")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
@@ -100,14 +118,3 @@ if st.session_state["messages"]:
             st.write(speaker + ":「" + message["content"] + "」")
         else:
             st.write(speaker + ": " + message["content"])
-
-#一回だけ実行する
-if "random_himatsubushi" not in st.session_state:
-    #一定時間後にこれを表示する
-    time.sleep(30)
-    himatsubushi = ["くるくるジョニー", "のりのりジョニー", "なないろジョニー"] 
-    #ランダム選出
-    st.session_state["random_himatsubushi"] = random.randint(0, len(himatsubushi)-1)
-    
-    st.write()
-    st.write("「暇つぶしに　" + himatsubushi[st.session_state["random_himatsubushi"]] + "　って入力してみると...」")
