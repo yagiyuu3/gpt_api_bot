@@ -52,6 +52,15 @@ if "messages" not in st.session_state:
         {"role": "system", "content": system_prompt}
         ]
     
+    response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=st.session_state["messages"]
+    )  
+
+    bot_message = response["choices"][0]["message"]
+    st.session_state["messages"].append(bot_message)
+    
+    
 # チャットボットとやりとりする関数
 def communicate():
     messages = st.session_state["messages"]
@@ -104,7 +113,6 @@ if len(st.session_state["messages"]) >= 2:
 # ユーザーインターフェイスの構築
 st.title("ジョニー面接官")
 image = st.image("images/" + st.session_state["image_change"])
-st.write("「こんにちは。」(まずは挨拶から始めましょう)")
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
