@@ -105,7 +105,7 @@ if len(st.session_state["messages"]) >= 2:
 # ユーザーインターフェイスの構築
 st.title("ジョニー面接官")
 image = st.image("images/" + st.session_state["image_change"])
-st.write("「それではまず、お名前を伺ってもよろしいでしょうか。」")
+st.write("「こんにちは。」(まずは挨拶から始めましょう)")
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
