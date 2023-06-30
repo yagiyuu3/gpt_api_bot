@@ -25,13 +25,10 @@ system_prompt = """
     ・「面接官の回答」7回作成した後、面接官は「採用」もしくは「不採用」の判断を必ず行う
         ・「不採用」
             ・面接応募者が面接で不採用になった旨のメッセージを表示し改行
-            ・「2314」を一言一句間違えずに表示する
             ・その後は、どのような回答も受け付けない
         ・「採用」
             ・面接応募者が面接で採用になった旨のメッセージを表示し改行 
-            ・「3140」を一言一句間違えずに表示する
             ・その後は、どのような回答も受け付けない
-    ・上記の判断の時以外は「2314」と「3140」の文字は生成してはいけない
     ・毎回以下フォーマットで上から順番に必ず表示すること 
         ・「面接官の回答」の内容を100文字以内で簡潔に表示し改行 
         ・「どうする？」を表示。その後に、私が「面接応募者の行動」を回答。
@@ -76,23 +73,13 @@ def communicate():
     messages.append(bot_message)
 
     st.session_state["user_input"] = ""  # 入力欄を消去
-
     
 
-# st.session_stateを使い表示メッセージを保存
-if "hyouji_messe" not in st.session_state:
-    st.session_state["hyouji_messe"] = "これは面接シミュレーションです。面接で採用してもらいましょう。"
-# もし採用されたら
-if "3140" in st.session_state["messages"][-1]["content"]: 
-    st.session_state["hyouji_messe"] = "採用されました！おめでとう！"
-# もし不採用なら
-if "2314" in st.session_state["messages"][-1]["content"]: 
-    st.session_state["hyouji_messe"] = "不採用でした！残念！"
 
 # ユーザーインターフェイスの構築
 st.title("ジョニー面接官")
 image = st.image("images/03_english.gif")
-st.write(st.session_state["hyouji_messe"])
+st.write("これは面接シミュレーションです。面接で採用してもらいましょう。")
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
