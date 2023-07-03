@@ -86,7 +86,7 @@ if st.session_state["messages"]:
         speaker = "🙂"
         if message["role"]=="assistant":
             speaker="🤖"
-        if i == 0:
-            st.write(speaker + ": " + message["content"])
-        else:
+        if 1 >= i >= 0:
             st.write(speaker + ": **" + message["content"] + "**")
+        else:
+            st.write(speaker + ": " + message["content"])
