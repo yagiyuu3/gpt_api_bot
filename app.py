@@ -82,7 +82,6 @@ def communicate():
 # ユーザーインターフェイスの構築
 st.title("ジョニー面接シミュレーション")
 image = st.image("images/03_english.gif")
-st.write("これは面接シミュレーションです。")
 st.write("「とても良い」「良い」「少し頑張ろう」「もっと頑張ろう」の4段階で評価されます。")
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
