@@ -1,10 +1,8 @@
 
+
 import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 import openai
-from gtts import gTTS
-from io import BytesIO
-import base64
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
@@ -73,24 +71,7 @@ def communicate():
 
     bot_message = response["choices"][0]["message"]
     messages.append(bot_message)
-    
-    # GPTの応答を音声に変換して再生
-    tts = gTTS(bot_message, lang="ja")
-    audio_data = BytesIO()
-    tts.save(audio_data)
-    
-    # 音声データをbase64エンコード
-    audio_base64 = base64.b64encode(audio_data.getvalue()).decode()
 
-    # JavaScriptコードの埋め込み
-    st.components.v1.html(f"""
-        <audio id="player" controls>
-            <source src="data:audio/wav;base64,{audio_base64}" type="audio/wav">
-        </audio>
-        <script>
-            document.getElementById("player").play();
-        </script>
-    """)
     st.session_state["user_input"] = ""  # 入力欄を消去
     
 
