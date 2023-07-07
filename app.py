@@ -81,7 +81,7 @@ image = st.image("images/03_english.gif")
 st.write("「とても良い」「良い」「少し頑張ろう」「もっと頑張ろう」の4段階で評価されます。")
 
 # レコーディングボタン
-audio_bytes = audio_recorder(pause_threshold=5.0)
+audio_bytes = audio_recorder(pause_threshold=2.0)
 # 文字起こし関数
 def voice_to_text():
     # 音声データを一時的な音声ファイルに保存
