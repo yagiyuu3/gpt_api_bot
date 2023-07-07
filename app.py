@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 import openai
@@ -98,10 +96,10 @@ def voice_to_text():
 if audio_bytes:
     # 文字起こしした文章をGPTに渡す
     st.session_state["user_input"] = voice_to_text()
-    audio_bytes = None
     communicate()
-# 文字を入力
-st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+else:
+    # 文字を入力
+    st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
