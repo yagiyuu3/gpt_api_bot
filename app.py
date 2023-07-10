@@ -94,12 +94,12 @@ def voice_to_text():
     
     return transcript['text']
     
-audio_bytes = None
 # もしレコーディングが終わったら
 if audio_bytes:
     # 文字起こしした文章をGPTに渡す
     st.session_state["user_input"] = voice_to_text()
     communicate()
+audio_bytes = None
     
     
 # 文字を入力
