@@ -93,13 +93,13 @@ def voice_to_text():
         transcript = openai.Audio.transcribe('whisper-1', f)
     
     return transcript['text']
+    
+audio_bytes = None
 # もしレコーディングが終わったら
 if audio_bytes:
     # 文字起こしした文章をGPTに渡す
     st.session_state["user_input"] = voice_to_text()
     communicate()
-    audio_bytes = None
-    print(audio_bytes)
     
     
 # 文字を入力
