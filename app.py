@@ -99,6 +99,8 @@ if audio_bytes:
     st.session_state["user_input"] = voice_to_text()
     communicate()
     audio_bytes = None
+    print(audio_bytes)
+    
     
 # 文字を入力
 st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
