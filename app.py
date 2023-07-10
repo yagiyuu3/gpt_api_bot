@@ -83,27 +83,6 @@ st.write("「とても良い」「良い」「少し頑張ろう」「もっと�
 # 文字を入力
 st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
-# レコーディングボタン
-audio_bytes = audio_recorder(pause_threshold=2.0)
-# 文字起こし関数
-def voice_to_text():
-    # 音声データを一時的な音声ファイルに保存
-    with open("temp.wav", "wb") as f:
-        f.write(audio_bytes)
-
-    # 音声ファイルの文字起こし
-    with open("temp.wav", "rb") as f:
-        transcript = openai.Audio.transcribe('whisper-1', f)
-    
-    return transcript['text']
-    
-# もしレコーディングが終わったら
-if audio_bytes != None:
-    # 文字起こしした文章をGPTに渡す
-    st.session_state["user_input"] = voice_to_text()
-    communicate()
-    audio_bytes = None
-
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
         
