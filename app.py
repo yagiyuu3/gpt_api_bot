@@ -94,7 +94,6 @@ def voice_to_text():
     
     return transcript['text']
     
-st.caption(audio_bytes)
 # もしレコーディングが終わったら
 if audio_bytes:
     # 文字起こしした文章をGPTに渡す
