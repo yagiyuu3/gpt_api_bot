@@ -79,6 +79,9 @@ def communicate():
 st.title("ジョニー面接シミュレーション")
 image = st.image("images/03_english.gif")
 st.write("「とても良い」「良い」「少し頑張ろう」「もっと頑張ろう」の4段階で評価されます。")
+    
+# 文字を入力
+st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 # レコーディングボタン
 audio_bytes = audio_recorder(pause_threshold=2.0)
@@ -101,10 +104,6 @@ if audio_bytes != None:
     st.session_state["user_input"] = voice_to_text()
     communicate()
     audio_bytes = None
-    
-    
-# 文字を入力
-st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
