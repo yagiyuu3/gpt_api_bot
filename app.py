@@ -92,6 +92,6 @@ if st.session_state["messages"]:
         if message["role"]=="assistant":
             speaker="ジョニー面接官"
         if 1 >= i >= 0:
-            st.write(speaker + ": " + message["content"])
+            st.write(speaker + "：" + message["content"])
         else:
-            st.caption(speaker + ": " + message["content"])
+            st.caption(speaker + "：" + message["content"])
