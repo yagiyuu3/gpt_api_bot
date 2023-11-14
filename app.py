@@ -1,9 +1,9 @@
 import streamlit as st
 from audio_recorder_streamlit import audio_recorder
-import openai
+from openai import OpenAI
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
-openai.api_key = st.secrets.OpenAIAPI.openai_api_key
+client = OpenAI(api_key=st.secrets.OpenAIAPI.openai_api_key)
 #初回設定命令文
 system_prompt = """
 このスレッドでは以下のルールを厳格に守ってください。 
@@ -51,7 +51,7 @@ if "messages" not in st.session_state:
         {"role": "system", "content": system_prompt}
         ]
     
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=st.session_state["messages"]
     )  
