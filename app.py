@@ -80,7 +80,7 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title("ジョニーと就活面接体験をしよう！")
+st.title("就活面接シミュレータ")
 image = st.image("images/03_english.gif")
 st.write("「とても良い」「良い」「少し頑張ろう」「もっと頑張ろう」の4段階で評価されます。")
     
