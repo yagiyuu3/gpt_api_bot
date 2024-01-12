@@ -87,6 +87,7 @@ if st.session_state["messages"]:
         
     for i, message in enumerate(reversed(messages[1:])):  # 直近のメッセージを上に
         speaker = "あなた:"
+        st.caption(type(message))
         if type(message) is class:
             if message.role == "assistant":
                 speaker = ""
