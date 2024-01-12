@@ -87,8 +87,7 @@ if st.session_state["messages"]:
         
     for i, message in enumerate(reversed(messages[1:])):  # 直近のメッセージを上に
         speaker = "あなた:"
-        st.caption(type(message))
-        if type(message) is not dice:
+        if not isinstance(message, dict):
             if message.role == "assistant":
                 speaker = ""
         if 1 >= i >= 0:
