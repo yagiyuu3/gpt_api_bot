@@ -87,7 +87,7 @@ if st.session_state["messages"]:
         
     for i, message in enumerate(reversed(messages[1:])):  # 直近のメッセージを上に
         speaker = "あなた:"
-        if not isinstance(message, dict):
+        if not type(message) is dict):
             if message.role == "assistant":
                 speaker = ""
         if 1 >= i >= 0:
